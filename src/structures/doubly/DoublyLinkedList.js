@@ -104,10 +104,30 @@ class DoublyLinkedList {
 
 
   reverseInPlace() {
-    throw new Error(
-      "TODO RETO: Implementar reverseInPlace() en DoublyLinkedList."
-    );
+    if (this.isEmpty()) return;
+
+    let current = this.head;
+    let temp = null;
+
+    // Recorremos intercambiando punteros en cada nodo
+    while (current !== null) {
+      temp = current.previous;
+      current.previous = current.next;
+      current.next = temp;
+      current = current.previous; // El previous es el antiguo 'next'
+    }
+
+    // Intercambio de puntos de entrada (head y tail)
+    if (temp !== null) {
+      this.head = temp.previous;
+    }
+    // Ajuste final: el tail ahora es lo que antes era el head original
+    // (Este ajuste depende de cómo quedó el último nodo procesado)
+    let oldHead = this.head;
+    this.head = this.tail;
+    this.tail = oldHead;
   }
+
 
   removeDuplicates() {
     throw new Error(
