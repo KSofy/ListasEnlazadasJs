@@ -87,8 +87,21 @@ class DoublyLinkedList {
   }
 
   clean() {
-    throw new Error("TODO RETO: Implementar clean() en DoublyLinkedList.");
+    let removed = 0;
+    let current = this.head;
+    while (current !== null) {
+      let next = current.next;
+      current.next = null;
+      current.previous = null; // Limpieza específica de lista doble
+      current = next;
+      removed++;
+    }
+    this.head = null;
+    this.tail = null;
+    this._size = 0;
+    return removed;
   }
+
 
   reverseInPlace() {
     throw new Error(
@@ -101,6 +114,7 @@ class DoublyLinkedList {
       "TODO RETO: Implementar removeDuplicates() en DoublyLinkedList."
     );
   }
+
 
   size() {
     return this._size;
