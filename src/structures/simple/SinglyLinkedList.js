@@ -80,7 +80,7 @@ class SinglyLinkedList {
 
     this.head = null;
     this.tail = null;
-    this.size = 0;
+    this._size = 0;
 
     return removed;
 }
@@ -113,7 +113,7 @@ class SinglyLinkedList {
         
         if (current.value === runner.next.value) {
           runner.next = runner.next.next;
-          this.size--;
+          this._size--;
           removedCount++; 
         } else {
           runner = runner.next;
