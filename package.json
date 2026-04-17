@@ -1,0 +1,18 @@
+{
+  "name": "listas-enlazadas-nodejs",
+  "version": "1.0.0",
+  "description": "Scaffolding base para migrar listas enlazadas de Java a Node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "demo": "node src/index.js"
+  },
+  "keywords": [
+    "linked-list",
+    "data-structures",
+    "nodejs",
+    "java-migration"
+  ],
+  "author": "umg.edu.gt",
+  "license": "MIT"
+}
