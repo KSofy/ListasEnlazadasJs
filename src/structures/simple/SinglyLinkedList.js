@@ -86,35 +86,42 @@ class SinglyLinkedList {
 }
 
   reverseInPlace() {
-    let prev = null;
+    let previous = null;
     let current = this.head;
     let next = null;
 
-    
-    this.tail = this.head;
-
+  
     while (current !== null) {
-        next = current.next;    // Guardar el siguiente
-        current.next = prev;    
-        prev = current;         // Mover prev un paso adelante
-        current = next;         // Mover current un paso adelante
+      next = current.next;   
+      current.next = previous;  
+      previous = current;         
+      current = next;             
     }
 
-    this.head = prev; // Al final, la cabeza es el último nodo procesado
-}
+    
+    this.tail = this.head;
+    this.head = previous;
+  }
 
   removeDuplicates() {
-    throw new Error(
-      "TODO RETO: Implementar removeDuplicates() en SinglyLinkedList."
-    );
-  }
+    let removedCount = 0; 
+    let current = this.head;
 
-  size() {
-    return this._size;
-  }
-
-  isEmpty() {
-    return this._size === 0;
+    while (current !== null) {
+      let runner = current;
+      while (runner.next !== null) {
+        
+        if (current.value === runner.next.value) {
+          runner.next = runner.next.next;
+          this.size--;
+          removedCount++; 
+        } else {
+          runner = runner.next;
+        }
+      }
+      current = current.next;
+    }
+    return removedCount; 
   }
 
   toString() {
