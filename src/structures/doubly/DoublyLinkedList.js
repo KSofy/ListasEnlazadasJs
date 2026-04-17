@@ -130,9 +130,36 @@ class DoublyLinkedList {
 
 
   removeDuplicates() {
-    throw new Error(
-      "TODO RETO: Implementar removeDuplicates() en DoublyLinkedList."
-    );
+    let removedCount = 0;
+    let current = this.head;
+
+    while (current !== null) {
+      let runner = current.next;
+      while (runner !== null) {
+        if (this._isSameValue(current.value, runner.value)) {
+          let toRemove = runner;
+          runner = runner.next; // Avanzamos el runner antes de borrar
+
+          // Reconexión de punteros (Magia de la lista doble)
+          if (toRemove.next !== null) {
+            toRemove.next.previous = toRemove.previous;
+          } else {
+            this.tail = toRemove.previous; // Si era el último, movemos tail
+          }
+          
+          if (toRemove.previous !== null) {
+            toRemove.previous.next = toRemove.next;
+          }
+          
+          this._size--;
+          removedCount++;
+        } else {
+          runner = runner.next;
+        }
+      }
+      current = current.next;
+    }
+    return removedCount;
   }
 
 
