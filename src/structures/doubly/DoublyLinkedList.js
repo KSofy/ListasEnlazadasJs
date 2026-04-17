@@ -1,4 +1,4 @@
-const DoublyNode = require("./DoublyNode");
+ const DoublyNode = require("./DoublyNode");
 
 class DoublyLinkedList {
   constructor() {
@@ -75,9 +75,15 @@ class DoublyLinkedList {
   }
 
   countOccurrences(value) {
-    throw new Error(
-      "TODO RETO: Implementar countOccurrences(value) en DoublyLinkedList."
-    );
+    let count = 0;
+    let current = this.head;
+    while (current !== null) {
+      if (this._isSameValue(current.value, value)) {
+        count++;
+      }
+      current = current.next;
+    }
+    return count;
   }
 
   clean() {
