@@ -68,14 +68,40 @@ class SinglyLinkedList {
   }
 
   clean() {
-    throw new Error("TODO RETO: Implementar clean() en SinglyLinkedList.");
-  }
+    let removed = 0;
+    let current = this.head;
+
+    while (current !== null) {
+        let next = current.next;
+        current.next = null; 
+        current = next;
+        removed++;
+    }
+
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+
+    return removed;
+}
 
   reverseInPlace() {
-    throw new Error(
-      "TODO RETO: Implementar reverseInPlace() en SinglyLinkedList."
-    );
-  }
+    let prev = null;
+    let current = this.head;
+    let next = null;
+
+    
+    this.tail = this.head;
+
+    while (current !== null) {
+        next = current.next;    // Guardar el siguiente
+        current.next = prev;    
+        prev = current;         // Mover prev un paso adelante
+        current = next;         // Mover current un paso adelante
+    }
+
+    this.head = prev; // Al final, la cabeza es el último nodo procesado
+}
 
   removeDuplicates() {
     throw new Error(
